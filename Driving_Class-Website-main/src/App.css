@@ -1,0 +1,497 @@
+/* Basic element styling from App.js inline styles */
+.site-title {
+  font-size: 25px;
+  color: white;
+  z-index: 110;
+  font-family: cursive;
+}
+
+.desktop-link {
+  text-decoration: none;
+  color: white;
+  margin: 0;
+  font-size: 20px;
+  transition: all 0.1s ease;
+  padding: 0 5px; 
+  display: block; 
+}
+
+/* Desktop Hover Effects */
+.desktop-link:hover {
+  border-bottom: 2px solid white;
+  transform: scale(1.15); 
+}
+
+/* Header Container */
+.sticky-header-container {
+  position: sticky;
+  top: 0px;
+  z-index: 100;
+}
+
+.header-background {
+  background-color: #0f1265ff;
+  padding: 15px 0; 
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.logo-title-group {
+  display: flex;
+  align-items: center;
+  margin-left: 60px; 
+}
+
+.desktop-nav-links {
+  display: flex; 
+  gap: 40px;
+  align-items: center;
+}
+
+.desktop-phone-and-login {
+  display: flex;
+  align-items: center;
+  margin-left: 0px;
+}
+
+.phone-number {
+  color: white;
+  margin-right: 10px;
+  font-family: cursive;
+}
+
+.login-icon {
+  border-radius: 50%;
+}
+
+/* Ensure the image is fixed and uses the animation */
+.moving-logo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 101;
+  animation: spin 5s linear infinite; 
+}
+/* Hide mobile elements on desktop */
+.mobile-menu-toggle,
+.mobile-nav-overlay {
+  display: none;
+}
+
+/* NEW: Hamburger Icon Styling (Hidden on Desktop) */
+.hamburger-icon {
+    font-size: 35px; /* Adjust size for a professional look */
+    color: white; 
+    line-height: 1; /* Ensures vertical centering */
+    cursor: pointer;
+    font-weight: bold;
+    display: none; /* Hidden by default on desktop */
+}
+
+/* Section Titles */
+.section-title {
+  text-align: center;
+  color: #0f1265ff;
+  font-size: 35px;
+  font-family: sans-serif;
+  text-decoration: underline;
+  margin: 40px 0 20px 0;
+}
+
+/* About Us Layout */
+.about-us-content {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding: 20px;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.about-image {
+  box-shadow: 20px 40px 40px rgba(0, 0, 0, 0.4);
+  border-radius: 22px;
+  width: 500px; 
+  height: 330px;
+}
+
+.about-text-container {
+  width: 600px;
+  font-size: 21px;
+  font-family: sans-serif;
+  margin-left: 40px;
+}
+
+/* Services & Package Card Containers */
+.card-container {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: center;
+  gap: 20px;
+  margin: 20px auto;
+  max-width: 1400px;
+}
+
+.card-title {
+  margin-top: 15px;
+  color: #0f1265ff;
+}
+
+.package-subtitle {
+  text-decoration: underline;
+  font-size: 25px;
+  color: #0f1265ff;
+}
+
+.feature-list {
+  text-align: start;
+}
+
+.old-price {
+  text-decoration: line-through;
+  font-size: 20px;
+}
+
+.new-price {
+  font-size: 30px;
+}
+
+.warning-text {
+    font-size: 18px;
+}
+
+/* Idea Image in Services Gap */
+.service-idea-image-container {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    width: 400px; 
+    transition: all 0.3s ease;
+}
+
+.service-idea-image-container .scheme-image {
+    width: 250px; 
+    height: 200px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Gallery */
+.gallery-container {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  margin-bottom: 80px;
+}
+
+.gallery-item {
+  transition: all ease-in-out 0.2s;
+}
+
+.gallery-item:hover {
+  transform: scale(1.1);
+}
+
+.gallery-img {
+  border-radius: 13px;
+  width: 370px;
+  height: 350px;
+  display: block;
+}
+
+/* Scheme Section */
+.scheme-section {
+  text-align: center;
+}
+
+.scheme-table {
+  width: 80% !important;
+  margin: 50px auto;
+  text-align: center;
+  box-shadow: 10px 10px 20px grey;
+}
+
+/* Slot Booking */
+.slot-table-container {
+  width: 60%;
+  text-align: center;
+  margin: 50px auto;
+  box-shadow: 10px 10px 20px grey;
+  border: 2px solid #0f1265ff;
+  border-radius: 15px;
+  padding: 20px 10px 30px 10px;
+}
+
+.slot-table input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+}
+
+/* Locations */
+.location-container {
+  text-align: center;
+  margin-bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.location-button {
+  padding: 5px 15px;
+  border-radius: 19px;
+  background-color: #1f23a0ff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: all ease-in-out 0.18s;
+  min-width: 150px;
+  margin: 5px 10px; 
+}
+
+.location-button:hover {
+  transform: scale(1.2);
+}
+
+/* Contact Us */
+.contact-form-container {
+  border: 2px solid #0f1265ff;
+  padding: 30px 0;
+  width: 60%;
+  margin: 50px auto;
+  border-radius: 15px;
+  box-shadow: 20px 20px 30px grey;
+}
+
+.contact-header {
+  text-align: center;
+}
+
+.contact-info {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.form-label {
+  color: #0f1265ff;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  box-sizing: border-box;
+}
+
+.contact-button-submit {
+  padding: 5px 15px;
+  border-radius: 19px;
+  background-color: #1f23a0ff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  float: right;
+  transition: all 0.18s ease;
+}
+.contact-button-submit:hover {
+    transform: scale(1.1);
+}
+
+.contact-button-refresh {
+  padding: 5px 15px;
+  border-radius: 19px;
+  background-color: #1f23a0ff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  top: 0px;
+  left: 310px; 
+  transition: all 0.18s ease;
+}
+.contact-button-refresh:hover {
+    transform: scale(1.1);
+}
+
+/* Up Arrow FIX: Moving it significantly in from the corner (40px) */
+.up-arrow-img {
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  bottom: 80px; /* INCREASED from 25px */
+  right: 20px; /* INCREASED from 25px */
+  z-index: 90;
+}
+
+/* ======================================= */
+/* 2. MOBILE RESPONSIVENESS (<= 768px) */
+/* ======================================= */
+
+@media (max-width: 768px) {
+  /* --- HEADER FIXES --- */
+  .moving-logo {
+    display: none; 
+  }
+
+  .logo-title-group {
+    margin-left: 0;
+  }
+  
+  .header-content {
+    padding: 0 10px;
+  }
+
+  /* HIDE DESKTOP NAV */
+  .desktop-nav-links {
+    display: none !important;
+  }
+
+  /* SHOW MOBILE TOGGLE & HAMBURGER STYLES */
+  .mobile-menu-toggle {
+    /* Displays the div holding the hamburger icon */
+    display: flex !important; 
+    align-items: center;
+    justify-content: center;
+    width: 35px; 
+    height: 35px;
+  }
+  
+  .hamburger-icon {
+    /* Overrides the default desktop 'display: none' */
+    display: block !important; 
+  }
+
+  /* MOBILE MENU OVERLAY */
+  .mobile-nav-overlay {
+    position: absolute;
+    top: 65px; 
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    z-index: 99;
+    flex-direction: column;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+    display: none; 
+  }
+
+  .mobile-nav-overlay.open {
+    display: flex; 
+  }
+
+  .mobile-link {
+    color: white;
+    text-decoration: none;
+    padding: 15px 20px;
+    border-bottom: 1px solid #ffffff33;
+    display: block;
+    font-size: 18px;
+  }
+  
+  .mobile-phone-and-login {
+    display: flex;
+    justify-content: center;
+    padding: 15px 0;
+  }
+
+  /* --- ABOUT US FIXES --- */
+  .about-us-content {
+    flex-direction: column; 
+    align-items: center;
+    padding: 20px 10px;
+  }
+
+  .about-image {
+    width: 90%; 
+    height: auto;
+    margin-bottom: 20px;
+  }
+
+  .about-text-container {
+    width: 100%; 
+    margin-left: 0;
+    padding: 0 10px;
+  }
+
+  /* --- SERVICES & PACKAGE FIXES --- */
+  .card-container {
+    flex-direction: column; 
+    gap: 15px;
+  }
+  
+  /* Base card style width adjustment */
+  .card-container > div {
+    width: 90% !important; 
+    margin: 15px auto !important;
+  }
+
+  /* HIDE the idea image on mobile so the service cards stack correctly */
+  .service-idea-image-container {
+    display: none; 
+  }
+
+  /* --- GALLERY FIXES --- */
+  .gallery-container {
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+  }
+
+  .gallery-img {
+    width: 90vw; 
+    height: auto;
+  }
+  
+  /* --- SCHEME & SLOTS FIXES --- */
+  .scheme-table,
+  .slot-table-container {
+    width: 95% !important; 
+    margin: 30px auto;
+  }
+
+  /* --- LOCATIONS & CONTACT FIXES --- */
+  .location-container > div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .location-button {
+    margin: 5px;
+  }
+
+  .contact-form-container {
+    width: 95%;
+  }
+
+  .contact-info {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .contact-info p {
+      margin-left: 0 !important;
+  }
+  
+  .contact-button-refresh {
+    position: static; 
+    margin-top: 10px;
+    margin-left: 0;
+    display: block;
+    float: none;
+  }
+  
+  .contact-button-submit {
+      float: none;
+      display: block;
+  }
+
+  .col-md-6.m-auto {
+      width: 95%;
+      margin: 0 auto;
+      padding: 0 10px;
+  }
+}
