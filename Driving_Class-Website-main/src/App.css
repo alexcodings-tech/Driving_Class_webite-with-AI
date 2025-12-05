@@ -1,3 +1,7 @@
+/* ======================================= */
+/* 1. GLOBAL & DESKTOP STYLES (Default) */
+/* ======================================= */
+
 /* Basic element styling from App.js inline styles */
 .site-title {
   font-size: 25px;
@@ -69,7 +73,7 @@
   border-radius: 50%;
 }
 
-/* Ensure the image is fixed and uses the animation */
+/* FIX: Moving Logo setup */
 .moving-logo {
   position: fixed;
   top: 0;
@@ -77,6 +81,7 @@
   z-index: 101;
   animation: spin 5s linear infinite; 
 }
+
 /* Hide mobile elements on desktop */
 .mobile-menu-toggle,
 .mobile-nav-overlay {
@@ -85,12 +90,12 @@
 
 /* NEW: Hamburger Icon Styling (Hidden on Desktop) */
 .hamburger-icon {
-    font-size: 35px; /* Adjust size for a professional look */
+    font-size: 35px; 
     color: white; 
-    line-height: 1; /* Ensures vertical centering */
+    line-height: 1; 
     cursor: pointer;
     font-weight: bold;
-    display: none; /* Hidden by default on desktop */
+    display: none; 
 }
 
 /* Section Titles */
@@ -104,6 +109,10 @@
 }
 
 /* About Us Layout */
+.about-us-section {
+    padding-top: 50px; 
+}
+
 .about-us-content {
   display: flex;
   justify-content: space-around;
@@ -125,7 +134,20 @@
   font-size: 21px;
   font-family: sans-serif;
   margin-left: 40px;
+  white-space: normal;
 }
+
+/* FIX: Styling for the unordered list */
+.about-list {
+    list-style-type: disc; /* Or none, if you don't want bullets */
+    padding-left: 20px;
+}
+
+.about-list-item {
+    margin: 10px 0; /* Ensures space between the typed lines */
+    min-height: 30px; /* Reserves space so lines don't jump */
+}
+
 
 /* Services & Package Card Containers */
 .card-container {
@@ -135,6 +157,16 @@
   gap: 20px;
   margin: 20px auto;
   max-width: 1400px;
+}
+
+/* FIX: Special Hover Effect for the 5 Service Boxes */
+.service-box-normal {
+    transition: all 0.3s ease;
+}
+.service-box-large {
+    transform: scale(1.08); /* Making the box bigger */
+    box-shadow: 5px 5px 20px #0f1265ff; /* Adding the hover shadow */
+    transition: all 0.3s ease;
 }
 
 .card-title {
@@ -310,23 +342,24 @@
   border: none;
   cursor: pointer;
   position: relative;
-  top: 0px;
-  left: 310px; 
+  top: 0x;
+  left: 210px; 
   transition: all 0.18s ease;
 }
 .contact-button-refresh:hover {
     transform: scale(1.1);
 }
 
-/* Up Arrow FIX: Moving it significantly in from the corner (40px) */
+/* Up Arrow FIX: Correctly positioned */
 .up-arrow-img {
   width: 50px;
   height: 50px;
   position: fixed;
-  bottom: 80px; /* INCREASED from 25px */
-  right: 20px; /* INCREASED from 25px */
+  bottom: 80px;
+  right: 20px; 
   z-index: 90;
 }
+
 
 /* ======================================= */
 /* 2. MOBILE RESPONSIVENESS (<= 768px) */

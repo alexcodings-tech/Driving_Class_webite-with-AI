@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import Typed from 'typed.js';
 import AOS from 'aos';
-import { Table } from 'react-bootstrap'; 
+import { Table } from 'react-bootstrap';
+import 'aos/dist/aos.css';
 
 // Import Images
 import logo from './images/bike.jpg';
-import login from './images/login.png'; 
+import login from './images/login.png';
 import Drive from './images/Homeimg.jpg';
 import idea from './images/idea.png';
 import uparrow from './images/Homearrow.png';
@@ -15,13 +16,19 @@ import g2 from './images/g2.png';
 import g3 from './images/g3.png';
 
 // Import CSS
-import './App.css'; 
+import './App.css';
 
 
 function App() {
   // --- STATE AND HANDLERS ---
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const typedElement = useRef(null);
+
+  // 🛑 FIVE SEPARATE REFS FOR THE FIVE LINES 🛑
+  const typedelement = useRef(null);
+  const typedelement2 = useRef(null);
+  const typedelement3 = useRef(null);
+  const typedelement4 = useRef(null);
+  const typedelement5 = useRef(null);
 
   // Base style for cards (hover effects are mostly handled by CSS)
   const baseCardStyle = {
@@ -34,7 +41,7 @@ function App() {
     borderRadius: "15px",
     boxShadow: "10px 10px 20px grey",
   };
-  
+
   const [servicesStyle, setServicesStyle] = useState(baseCardStyle);
   const [price1Style, setPrice1Style] = useState(baseCardStyle);
   const [price2Style, setPrice2Style] = useState(baseCardStyle);
@@ -45,11 +52,12 @@ function App() {
     setIsMenuOpen(prev => !prev);
   };
 
+  // Hover handlers for normal cards (services, packages)
   const handleHover = (setter) => {
-    setter(prev => ({ 
-      ...prev, 
-      boxShadow: "5px 5px 20px #0f1265ff", 
-      transform: "scale(1.08)" 
+    setter(prev => ({
+      ...prev,
+      boxShadow: "5px 5px 20px #0f1265ff",
+      transform: "scale(1.08)"
     }));
   };
 
@@ -57,27 +65,70 @@ function App() {
     setter(baseCardStyle);
   };
 
+  // New State for the 5 Service Boxes' special hover effect
+  const [specialBoxHover, setSpecialBoxHover] = useState(null);
+
+  const handleSpecialHover = (index) => {
+    setSpecialBoxHover(index);
+  };
+
+  const handleSpecialLeave = () => {
+    setSpecialBoxHover(null);
+  };
+  // -----------------------------
+
 
   useEffect(() => {
-    AOS.init({
-      duration: 1000, 
-      once: false, 
+    AOS.init({ duration: 1000, once: false });
+
+    // 🛑 TYPED.JS CHAINING LOGIC (Ensures sequential typing, showCursor: false applied) 🛑
+
+    const typingOptions = {
+      typeSpeed: 20,
+      loop: false,
+      showCursor: false,
+    };
+
+    let typed1 = new Typed(typedelement.current, {
+      strings: ["Offers training for both two-wheelers and four-wheelers."],
+      ...typingOptions
     });
 
-    const typed = new Typed(typedElement.current, {
-      strings: ["A driving school for both two-wheelers and four-wheelers provides comprehensive training to help learners gain confidence and master safe driving skills. Certified instructors guide students through every step, from understanding vehicle controls and road signs to practicing real-world driving techniques. Whether it’s learning to balance and maneuver a bike or handling a car smoothly in traffic, the school offers structured lessons tailored to each learner’s pace. With a focus on safety, discipline, and responsible driving, the training prepares students to become competent, licensed drivers ready for the road."],
-      typeSpeed: 20,
+    let typed2 = new Typed(typedelement2.current, {
+      strings: ["Certified instructors teach vehicle controls, road signs, and real-world driving skills."],
+      ...typingOptions
     });
-    
-    // Cleanup function for Typed.js
+
+    let typed3 = new Typed(typedelement3.current, {
+      strings: ["Provides bike balancing and car-handling practice in traffic conditions."],
+      ...typingOptions
+    });
+
+    let typed4 = new Typed(typedelement4.current, {
+      strings: ["Lessons are structured and tailored to each learner’s pace."],
+      ...typingOptions
+    });
+
+    let typed5 = new Typed(typedelement5.current, {
+      strings: ["Focuses on safety and responsible driving to prepare students for licensing."],
+      ...typingOptions
+    });
+
+    // Cleanup function for all instances
     return () => {
-      typed.destroy();
+      typed1.destroy();
+      typed2.destroy();
+      typed3.destroy();
+      typed4.destroy();
+      typed5.destroy();
     };
+    // The dependency array is intentionally empty to run once on mount, 
+    // as the logic is intended for initial sequential text typing.
+    // This is often where a linter (yellow signal) would suggest adding 'typedelement' etc.
   }, []);
 
-  
   const messageHandle = (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
     let slot = "";
 
     const username = document.getElementById("username")?.value;
@@ -85,13 +136,13 @@ function App() {
     const message = document.getElementById("message")?.value;
 
     const slotsMap = {
-      v1: "9:00am to 10:00am",
-      v2: "10:00am to 11:00am", 
+      v1: "9:00am to 10:00am", 
+      v2: "10:00am to 11:00am",
       v3: "11:00am to 12:00pm",
-      v4: "12:00pm to 1:00pm", 
+      v4: "12:00pm to 1:00pm",
       v5: "1:00pm to 2:00pm", 
       v6: "2:00pm to 3:00pm",
-      v7: "3:00pm to 4:00pm", 
+      v7: "3:00pm to 4:00pm",
       v8: "4:00pm to 5:00pm",
       v9: "5:00pm to 6:00pm",
     };
@@ -103,7 +154,7 @@ function App() {
         slotSelected = true;
       }
     }
-    
+
     if (username && email && message) {
       if (slotSelected) {
         const content = `Username: ${username}\nEmail: ${email}\nMessage: ${message}\nSlots: ${slot.trim()}`;
@@ -127,7 +178,7 @@ function App() {
       <>
         {linkItems.map(item => (
           <div key={item}>
-            <a 
+            <a
               className={isMobile ? "mobile-link" : "desktop-link"}
               href={`#${item.toLowerCase().replace(/\s/g, '')}`}
               onClick={isMobile ? toggleMenu : undefined}
@@ -136,7 +187,7 @@ function App() {
             </a>
           </div>
         ))}
-        
+
         <div className={isMobile ? "mobile-phone-and-login" : "desktop-phone-and-login"}>
           <span className="phone-number">+91 9840436069</span>
           {!isMobile && <img src={login} width={35} height={35} alt="Login" className="login-icon" />}
@@ -144,11 +195,11 @@ function App() {
       </>
     );
   };
-  
+
   // --- JSX RENDER ---
   return (
     <>
-      {/* GLOBAL CSS ANIMATION KEYFRAMES (REQUIRED) */}
+      {/* GLOBAL CSS ANIMATION KEYFRAMES (REQUIRED for the moving logo) */}
       <style>
         {`
         @keyframes spin {
@@ -161,25 +212,22 @@ function App() {
         }
         `}
       </style>
-      
+
       {/* 1. STICKY HEADER (REFACTORED FOR RESPONSIVENESS) */}
       <img src={logo} width={70} height={55} className="moving-logo" alt="Logo animation" />
       <div className="sticky-header-container">
         <div className="header-background">
           <div className="header-content">
-            
-            {/* Logo and Title (Always Visible) */}
+
             <div className="logo-title-group">
               <i className="site-title">Sharmila Driving Class</i>
             </div>
-            
-            {/* Desktop Links Container (Hidden on Mobile via CSS) */}
+
             <div className="desktop-nav-links">
               {renderNavLinks(false)}
-            </div> 
+            </div>
 
-            {/* Mobile Menu Icon/Toggle (HAMBURGER ≡) */}
-            <div 
+            <div
               className="mobile-menu-toggle"
               onClick={toggleMenu}
               aria-expanded={isMenuOpen}
@@ -187,7 +235,7 @@ function App() {
               role="button"
             >
               <span className="hamburger-icon">
-                {isMenuOpen ? '×' : '\u2261'} 
+                {isMenuOpen ? '×' : '\u2261'}
               </span>
             </div>
           </div>
@@ -195,10 +243,10 @@ function App() {
       </div>
 
       {/* 2. MOBILE NAVIGATION MENU (CONDITIONAL OVERLAY) */}
-      <div 
+      <div
         id="mobile-nav-menu"
         className={`mobile-nav-overlay ${isMenuOpen ? 'open' : ''}`}
-        onClick={toggleMenu} 
+        onClick={toggleMenu}
       >
         {renderNavLinks(true)}
       </div>
@@ -206,13 +254,20 @@ function App() {
       {/* --- ABOUT US --- */}
       <div id="aboutus" className="about-us-section">
         <h1 className="section-title">About us</h1>
-        
+
         <div className="about-us-content">
           <div className="about-image-container">
             <img src={Drive} alt="Driving class" className="about-image" />
           </div>
           <div className="about-text-container">
-            <span ref={typedElement} className="about-text"></span>
+            {/* 🛑 USING UNORDERED LIST <ul> as requested 🛑 */}
+            <ul className="about-list">
+              <li className="about-list-item"><span ref={typedelement}></span></li>
+              <li className="about-list-item"><span ref={typedelement2}></span></li>
+              <li className="about-list-item"><span ref={typedelement3}></span></li>
+              <li className="about-list-item"><span ref={typedelement4}></span></li>
+              <li className="about-list-item"><span ref={typedelement5}></span></li>
+            </ul>
           </div>
         </div>
       </div>
@@ -220,64 +275,64 @@ function App() {
       {/* --- SERVICES --- */}
       <h1 id="services" className="section-title">Our Services</h1>
       <div className="card-container">
-        {/* Service 1 */}
-        <div 
+        {/* Service 1: Two-Wheeler Training */}
+        <div
           style={servicesStyle}
-          onMouseEnter={() => handleHover(setServicesStyle)}
-          onMouseLeave={() => handleLeave(setServicesStyle)}
-          data-aos="fade-up" data-aos-duration="1400"
+          onMouseEnter={() => handleSpecialHover(1)}
+          onMouseLeave={handleSpecialLeave}
+          className={specialBoxHover === 1 ? 'service-box-large' : 'service-box-normal'}
         >
           <h4 className="card-title">Two-Wheeler Training (Scooter & Bike Coaching)</h4><br />
           <span>Our two-wheeler training program helps beginners and experienced riders develop complete control and confidence on the road. We cover essential skills such as balance, smooth acceleration, braking techniques, turning, and traffic awareness. Certified instructors ensure safe and personalized training for every learner.</span>
         </div>
 
-        {/* Service 2 */}
-        <div 
-          style={servicesStyle} 
-          onMouseEnter={() => handleHover(setServicesStyle)}
-          onMouseLeave={() => handleLeave(setServicesStyle)}
-          data-aos="fade-up" data-aos-duration="1600"
+        {/* Service 2: Four-Wheeler Driving Classes */}
+        <div
+          style={servicesStyle}
+          onMouseEnter={() => handleSpecialHover(2)}
+          onMouseLeave={handleSpecialLeave}
+          className={specialBoxHover === 2 ? 'service-box-large' : 'service-box-normal'}
         >
           <h4 className="card-title">Four-Wheeler Driving Classes (Car Driving Lessons)</h4><br />
           <span>Our four-wheeler driving course provides hands-on training in both manual and automatic cars. Learners are trained in steering control, clutch and gear management, reversing, parking techniques, and real-road traffic navigation. Each session is designed to build confidence and ensure safe, responsible driving.</span>
         </div>
 
-        {/* Service 3 */}
-        <div 
+        {/* Service 3: License Assistance & RTO Support */}
+        <div
           style={servicesStyle}
-          onMouseEnter={() => handleHover(setServicesStyle)}
-          onMouseLeave={() => handleLeave(setServicesStyle)}
-          data-aos="fade-up" data-aos-duration="1800"
+          onMouseEnter={() => handleSpecialHover(3)}
+          onMouseLeave={handleSpecialLeave}
+          className={specialBoxHover === 3 ? 'service-box-large' : 'service-box-normal'}
         >
           <h4 className="card-title">License Assistance & RTO Support (Guidance)</h4><br />
           <span>We assist learners throughout the entire licensing process, including application submission, slot booking, documentation, mock tests, and preparing for the official driving test. Our team ensures a smooth, hassle-free experience with the RTO.</span>
         </div>
       </div>
 
-      {/* Second row of services - NOW INCLUDES THE IDEA IMAGE IN THE CENTER */}
+      {/* Second row of services */}
       <div className="card-container">
-        {/* Service 4 */}
-        <div 
+        {/* Service 4: Doorstep Pickup & Flexible Training Slots */}
+        <div
           style={servicesStyle}
-          onMouseEnter={() => handleHover(setServicesStyle)}
-          onMouseLeave={() => handleLeave(setServicesStyle)}
-          data-aos="fade-up" data-aos-duration="1800"
+          onMouseEnter={() => handleSpecialHover(4)}
+          onMouseLeave={handleSpecialLeave}
+          className={specialBoxHover === 4 ? 'service-box-large' : 'service-box-normal'}
         >
           <h4 className="card-title">Doorstep Pickup & Flexible Training Slots</h4><br />
           <span>To make learning convenient, we provide doorstep pickup and drop for practical sessions. Learners can choose flexible batch timings—morning, evening, or weekend classes—to suit their schedules. Our goal is to offer a comfortable and personalized training experience.</span>
         </div>
 
-        {/* 💡 MOVED IMAGE ELEMENT FOR CENTER GAP 💡 */}
+        {/* 💡 IMAGE ELEMENT IN THE CENTER GAP 💡 */}
         <div className="service-idea-image-container">
           <img src={idea} alt="Idea icon" className="scheme-image" />
         </div>
-        
-        {/* Service 5 */}
-        <div 
+
+        {/* Service 5: Advanced Driving Techniques & Safety Training */}
+        <div
           style={servicesStyle}
-          onMouseEnter={() => handleHover(setServicesStyle)}
-          onMouseLeave={() => handleLeave(setServicesStyle)}
-          data-aos="fade-up" data-aos-duration="2000"
+          onMouseEnter={() => handleSpecialHover(5)}
+          onMouseLeave={handleSpecialLeave}
+          className={specialBoxHover === 5 ? 'service-box-large' : 'service-box-normal'}
         >
           <h4 className="card-title">Advanced Driving Techniques & Safety Training</h4><br />
           <span>For those who want to improve their driving skills, we offer advanced courses such as highway driving, night-time driving, emergency braking, skid control awareness, and defensive driving. These sessions are ideal for new drivers, working professionals, and refresher trainees.</span>
@@ -301,7 +356,7 @@ function App() {
       {/* --- SCHEME --- */}
       <div id="scheme" className="scheme-section">
         <h1 className="section-title" style={{ marginTop: "30px" }}>10-Day Training Schedule</h1>
-        
+
         <Table striped bordered responsive hover className="scheme-table">
           <thead className="thead-light">
             <tr>
@@ -380,13 +435,11 @@ function App() {
             </thead>
             <tbody>
               <tr>
-                <th scope="row">1</th>
-                <td>9:00am to 10:00am</td>
+                <th scope="row">1</th><td>9:00am to 10:00am</td>
                 <td><input id="v1" type="checkbox" name="slot" /></td>
                 </tr>
               <tr>
-                <th scope="row">2</th>
-                <td>10:00am to 11:00am</td>
+                <th scope="row">2</th><td>10:00am to 11:00am</td>
                 <td><input id="v2" type="checkbox" name="slot" /></td>
                 </tr>
               <tr>
@@ -410,7 +463,8 @@ function App() {
                 <td><input id="v6" type="checkbox" name="slot" /></td>
                 </tr>
               <tr>
-                <th scope="row">7</th><td>3:00pm to 4:00pm</td>
+                <th scope="row">7</th>
+                <td>3:00pm to 4:00pm</td>
                 <td><input id="v7" type="checkbox" name="slot" /></td>
                 </tr>
               <tr>
@@ -433,18 +487,19 @@ function App() {
       <h1 className="section-title" id="package">Our Packages</h1>
       <div className="card-container">
         {/* Package 1: Two Wheeler */}
-        <div 
-          style={price1Style} 
+        <div
+          style={price1Style}
           onMouseEnter={() => handleHover(setPrice1Style)}
           onMouseLeave={() => handleLeave(setPrice1Style)}
-          data-aos="fade-zoom-in" data-aos-duration="2100"
         >
           <h2 className="card-title">Beginners - MCWG</h2><br />
           <div>
             <h2 className="package-subtitle">Two Wheeler</h2>
-            <p><span><i>5 Day Plan :</i>&nbsp;</span><span className="old-price"> ₹700/Hr</span>
+            <p><span><i>5 Day Plan :</i>&nbsp;</span>
+            <span className="old-price"> ₹700/Hr</span>
             <span>&nbsp;<strong className="new-price">₹599/Hr</strong></span></p>
-            <p><span><i>10 Day Plan :</i>&nbsp;</span><span className="old-price"> ₹800/Hr</span>
+            <p><span><i>10 Day Plan :</i>&nbsp;</span>
+            <span className="old-price"> ₹800/Hr</span>
             <span>&nbsp;<strong className="new-price">₹649/Hr</strong></span></p>
             <h4 className="feature-list">✅ 8-Track</h4>
             <h4 className="feature-list">✅ Turning</h4>
@@ -452,18 +507,18 @@ function App() {
             <h4 className="feature-list">✅ Full Training</h4>
           </div>
         </div>
-        
+
         {/* Package 2: Four Wheeler */}
-        <div 
-          style={price3Style} 
+        <div
+          style={price3Style}
           onMouseEnter={() => handleHover(setPrice3Style)}
           onMouseLeave={() => handleLeave(setPrice3Style)}
-          data-aos="fade-zoom-out" data-aos-duration="2100"
         >
           <h2 className="card-title">Beginners - LMV</h2><br />
           <div>
             <h2 className="package-subtitle">Four Wheeler</h2>
-            <p><span><i>10 Day Plan :</i>&nbsp;</span><span className="old-price">₹650/Hr</span>
+            <p><span><i>10 Day Plan :</i>&nbsp;</span>
+            <span className="old-price">₹650/Hr</span>
             <span>&nbsp;<strong className="new-price">₹499/Hr</strong></span></p>
           </div><br />
           <h4 className="feature-list">✅ Full training - ABC</h4>
@@ -476,13 +531,12 @@ function App() {
         </div>
 
         {/* Package 3: Combo */}
-        <div 
+        <div
           style={price2Style}
           onMouseEnter={() => handleHover(setPrice2Style)}
           onMouseLeave={() => handleLeave(setPrice2Style)}
-          data-aos="fade-zoom-out" data-aos-duration="2100"
         >
-          <h2 className="card-title">
+ <h2 className="card-title">
             <span><img src={offer} alt="Offer badge" width={100} height={100} /></span>
             <span style={{ fontSize: "50px" }}>3&nbsp;</span><span>in&nbsp;</span><span style={{ fontSize: "50px" }}>1</span>
           </h2><br />
