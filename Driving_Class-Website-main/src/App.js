@@ -42,7 +42,48 @@ function App() {
     boxShadow: "10px 10px 20px grey",
   };
 
-  const [servicesStyle, setServicesStyle] = useState(baseCardStyle);
+  const [servicesStyle1, setServicesStyle1] = useState({
+    transition: "all 0.3s ease",
+    width: "400px",
+    textAlign: "center",
+    border: "2px solid black",
+    margin: "50px auto",
+    padding: "20px 30px",
+    borderRadius: "15px",
+    boxShadow: "10px 10px 20px grey",
+  });
+const [servicesStyle2, setServicesStyle2] = useState({transition: "all 0.3s ease",
+    width: "400px",
+    textAlign: "center",
+    border: "2px solid black",
+    margin: "50px auto",
+    padding: "20px 30px",
+    borderRadius: "15px",
+    boxShadow: "10px 10px 20px grey",});
+  const [servicesStyle3, setServicesStyle3] = useState({transition: "all 0.3s ease",
+    width: "400px",
+    textAlign: "center",
+    border: "2px solid black",
+    margin: "50px auto",
+    padding: "20px 30px",
+    borderRadius: "15px",
+    boxShadow: "10px 10px 20px grey",});
+  const [servicesStyle4, setServicesStyle4] = useState({transition: "all 0.3s ease",
+    width: "400px",
+    textAlign: "center",
+    border: "2px solid black",
+    margin: "50px auto",
+    padding: "20px 30px",
+    borderRadius: "15px",
+    boxShadow: "10px 10px 20px grey",});
+  const [servicesStyle5, setServicesStyle5] = useState({transition: "all 0.3s ease",
+    width: "400px",
+    textAlign: "center",
+    border: "2px solid black",
+    margin: "50px auto",
+    padding: "20px 30px",
+    borderRadius: "15px",
+    boxShadow: "10px 10px 20px grey",});
   const [price1Style, setPrice1Style] = useState(baseCardStyle);
   const [price2Style, setPrice2Style] = useState(baseCardStyle);
   const [price3Style, setPrice3Style] = useState(baseCardStyle);
@@ -157,7 +198,7 @@ function App() {
 
     if (username && email && message) {
       if (slotSelected) {
-        const content = `Username: ${username}\nEmail: ${email}\nMessage: ${message}\nSlots: ${slot.trim()}`;
+        const content = `Username: ${username}\n\nEmail: ${email}\n\nMessage: ${message}\n\nSlots: ${slot.trim()}`;
         const url = `https://wa.me/9840436069?text=${encodeURIComponent(content)}`;
         window.open(url, "_blank");
       } else {
@@ -247,6 +288,7 @@ function App() {
         id="mobile-nav-menu"
         className={`mobile-nav-overlay ${isMenuOpen ? 'open' : ''}`}
         onClick={toggleMenu}
+        style={{position:"fixed",top:"0px",backgroundColor:"#000000da"}}
       >
         {renderNavLinks(true)}
       </div>
@@ -276,35 +318,59 @@ function App() {
       <h1 id="services" className="section-title">Our Services</h1>
       <div className="card-container">
         {/* Service 1: Two-Wheeler Training */}
-        <div
-          style={servicesStyle}
-          onMouseEnter={() => handleSpecialHover(1)}
-          onMouseLeave={handleSpecialLeave}
+        <div data-aos="fade-in" data-aos-duration="2000"
+          style={servicesStyle1}
+          onMouseEnter={(()=>{setServicesStyle1({
+            ...servicesStyle1,
+            boxShadow: "5px 5px 20px #0f1265ff",
+            transform: "scale(1.08)"
+          }); })}
+          onMouseLeave={(()=>{setServicesStyle1({
+            ...servicesStyle1,
+            transform: "scale(1)",
+            boxShadow: "10px 10px 20px grey",
+          }); })}
           className={specialBoxHover === 1 ? 'service-box-large' : 'service-box-normal'}
         >
-          <h4 className="card-title">Two-Wheeler Training (Scooter & Bike Coaching)</h4><br />
+          <h4 className="card-title" style={{color:"#0f1265ff"}}>Two-Wheeler Training (Scooter & Bike Coaching)</h4><br />
           <span>Our two-wheeler training program helps beginners and experienced riders develop complete control and confidence on the road. We cover essential skills such as balance, smooth acceleration, braking techniques, turning, and traffic awareness. Certified instructors ensure safe and personalized training for every learner.</span>
         </div>
 
         {/* Service 2: Four-Wheeler Driving Classes */}
-        <div
-          style={servicesStyle}
-          onMouseEnter={() => handleSpecialHover(2)}
-          onMouseLeave={handleSpecialLeave}
+        <div data-aos="fade-in" data-aos-duration="2000"
+          style={servicesStyle2}
+          onMouseEnter={(()=>{setServicesStyle2({
+            ...servicesStyle2,
+            boxShadow: "5px 5px 20px #0f1265ff",
+            transform: "scale(1.08)"
+          }); })}
+          onMouseLeave={(()=>{setServicesStyle2({
+            ...servicesStyle2,
+            transform: "scale(1)",
+            boxShadow: "10px 10px 20px grey",
+          }); })}
           className={specialBoxHover === 2 ? 'service-box-large' : 'service-box-normal'}
         >
-          <h4 className="card-title">Four-Wheeler Driving Classes (Car Driving Lessons)</h4><br />
+          <h4 className="card-title" style={{color:"#0f1265ff"}}>Four-Wheeler Driving Classes (Car Driving Lessons)</h4><br />
           <span>Our four-wheeler driving course provides hands-on training in both manual and automatic cars. Learners are trained in steering control, clutch and gear management, reversing, parking techniques, and real-road traffic navigation. Each session is designed to build confidence and ensure safe, responsible driving.</span>
         </div>
 
         {/* Service 3: License Assistance & RTO Support */}
-        <div
-          style={servicesStyle}
-          onMouseEnter={() => handleSpecialHover(3)}
-          onMouseLeave={handleSpecialLeave}
+        <div data-aos="fade-in" data-aos-duration="2000"
+          style={servicesStyle3}
+          onMouseEnter={(()=>{setServicesStyle3({
+            ...servicesStyle3,
+            boxShadow: "5px 5px 20px #0f1265ff",
+            transform: "scale(1.08)"
+          }); })}
+          onMouseLeave={(()=>{setServicesStyle3({
+            ...servicesStyle3,
+            transform: "scale(1)",
+            boxShadow: "10px 10px 20px grey",
+          }); })}
           className={specialBoxHover === 3 ? 'service-box-large' : 'service-box-normal'}
         >
-          <h4 className="card-title">License Assistance & RTO Support (Guidance)</h4><br />
+          <h4 className="card-title" style={{color:"#0f1265ff"}}>License Assistance & RTO Support (Guidance)</h4><br />
           <span>We assist learners throughout the entire licensing process, including application submission, slot booking, documentation, mock tests, and preparing for the official driving test. Our team ensures a smooth, hassle-free experience with the RTO.</span>
         </div>
       </div>
@@ -312,13 +378,21 @@ function App() {
       {/* Second row of services */}
       <div className="card-container">
         {/* Service 4: Doorstep Pickup & Flexible Training Slots */}
-        <div
-          style={servicesStyle}
-          onMouseEnter={() => handleSpecialHover(4)}
-          onMouseLeave={handleSpecialLeave}
+        <div data-aos="fade-in" data-aos-duration="2000"
+          style={servicesStyle4}
+          onMouseEnter={(()=>{setServicesStyle4({
+            ...servicesStyle4,
+            boxShadow: "5px 5px 20px #0f1265ff",
+            transform: "scale(1.08)"
+          }); })}
+          onMouseLeave={(()=>{setServicesStyle4({
+            ...servicesStyle4,
+            transform: "scale(1)",
+            boxShadow: "10px 10px 20px grey",
+          }); })}
           className={specialBoxHover === 4 ? 'service-box-large' : 'service-box-normal'}
         >
-          <h4 className="card-title">Doorstep Pickup & Flexible Training Slots</h4><br />
+          <h4 className="card-title" style={{color:"#0f1265ff"}}>Doorstep Pickup & Flexible Training Slots</h4><br />
           <span>To make learning convenient, we provide doorstep pickup and drop for practical sessions. Learners can choose flexible batch timings—morning, evening, or weekend classes—to suit their schedules. Our goal is to offer a comfortable and personalized training experience.</span>
         </div>
 
@@ -328,13 +402,21 @@ function App() {
         </div>
 
         {/* Service 5: Advanced Driving Techniques & Safety Training */}
-        <div
-          style={servicesStyle}
-          onMouseEnter={() => handleSpecialHover(5)}
-          onMouseLeave={handleSpecialLeave}
+        <div data-aos="fade-in" data-aos-duration="2000"
+          style={servicesStyle5}
+          onMouseEnter={(()=>{setServicesStyle5({
+            ...servicesStyle5,
+            boxShadow: "5px 5px 20px #0f1265ff",
+            transform: "scale(1.08)"
+          }); })}
+          onMouseLeave={(()=>{setServicesStyle5({
+            ...servicesStyle5,
+            transform: "scale(1)",
+            boxShadow: "10px 10px 20px grey",
+          }); })}
           className={specialBoxHover === 5 ? 'service-box-large' : 'service-box-normal'}
         >
-          <h4 className="card-title">Advanced Driving Techniques & Safety Training</h4><br />
+          <h4 className="card-title" style={{color:"#0f1265ff"}}>Advanced Driving Techniques & Safety Training</h4><br />
           <span>For those who want to improve their driving skills, we offer advanced courses such as highway driving, night-time driving, emergency braking, skid control awareness, and defensive driving. These sessions are ideal for new drivers, working professionals, and refresher trainees.</span>
         </div>
       </div>
@@ -487,70 +569,85 @@ function App() {
       <h1 className="section-title" id="package">Our Packages</h1>
       <div className="card-container">
         {/* Package 1: Two Wheeler */}
-        <div
+        <div data-aos="fade-in" data-aos-duration="2000"
           style={price1Style}
           onMouseEnter={() => handleHover(setPrice1Style)}
           onMouseLeave={() => handleLeave(setPrice1Style)}
         >
-          <h2 className="card-title">Beginners - MCWG</h2><br />
+         <h2 style={{fontSize:"35px",color:"#0f1265ff"}}>Beginners</h2><br></br>
+        <div>
+          <h2 style={{textDecoration:"underline",fontSize:"28px",color:"#0f1265ff"}}>Two Wheeler</h2>
           <div>
-            <h2 className="package-subtitle">Two Wheeler</h2>
-            <p><span><i>5 Day Plan :</i>&nbsp;</span>
-            <span className="old-price"> ₹700/Hr</span>
-            <span>&nbsp;<strong className="new-price">₹599/Hr</strong></span></p>
-            <p><span><i>10 Day Plan :</i>&nbsp;</span>
-            <span className="old-price"> ₹800/Hr</span>
-            <span>&nbsp;<strong className="new-price">₹649/Hr</strong></span></p>
-            <h4 className="feature-list">✅ 8-Track</h4>
-            <h4 className="feature-list">✅ Turning</h4>
-            <h4 className="feature-list">✅ Balance </h4>
-            <h4 className="feature-list">✅ Full Training</h4>
+            <h4>Know cycling?</h4>
+            <p><span><i style={{fontSize:"19px"}}>5 Day Plan :&nbsp;</i></span><span style={{textDecoration:"line-through",fontSize:"20px"}}> ₹5000/-</span><span>&nbsp;<strong style={{fontSize:"30px"}}>₹3000/-</strong></span></p>
           </div>
+          <div>
+            <h4>Dont know cycling?</h4>
+            <p><span><i style={{fontSize:"19px"}}>10 Day Plan :</i>&nbsp;</span><span style={{textDecoration:"line-through",fontSize:"20px"}}> ₹8000/Hr</span><span>&nbsp;<strong style={{fontSize:"25px"}}>₹6000/-</strong></span></p>
+          </div>
+          <h4 style={{textAlign:"start"}}><i>✅ 8-Track</i></h4>
+          <h4 style={{textAlign:"start"}}><i>✅ Each Class 45 mins</i></h4>
+          <h4 style={{textAlign:"start"}}><i>✅ Balance + Turning </i></h4>
+          <h4 style={{textAlign:"start"}}><i>✅ Traffic training</i></h4>
+          <h4 style={{textAlign:"start"}}><i>✅ Doubles</i></h4>
+        </div>
         </div>
 
         {/* Package 2: Four Wheeler */}
-        <div
+        <div data-aos="fade-in" data-aos-duration="2000"
           style={price3Style}
           onMouseEnter={() => handleHover(setPrice3Style)}
           onMouseLeave={() => handleLeave(setPrice3Style)}
         >
-          <h2 className="card-title">Beginners - LMV</h2><br />
+          <h2 style={{fontSize:"35px",color:"#0f1265ff"}}>Beginners</h2><br></br>
+        {/* <div>
+          <h2 style={{textDecoration:"underline",fontSize:"25px",color:"#0f1265ff"}}>Two Wheeler + Four Wheeler</h2>
           <div>
-            <h2 className="package-subtitle">Four Wheeler</h2>
-            <p><span><i>10 Day Plan :</i>&nbsp;</span>
-            <span className="old-price">₹650/Hr</span>
-            <span>&nbsp;<strong className="new-price">₹499/Hr</strong></span></p>
-          </div><br />
-          <h4 className="feature-list">✅ Full training - ABC</h4>
-          <h4 className="feature-list">✅ Steering Controls</h4>
-          <h4 className="feature-list">✅ Mock test</h4>
-          <h4 className="feature-list">✅ Gear Balancing</h4>
-          <h4 className="feature-list">✅ Round Form</h4>
-          <h4 className="feature-list">✅ Straight Track</h4><br />
-          <p className="warning-text">⚠️ Learners should have their own car</p>
-        </div>
+          <div>
+            <h4>Known of riding Bicycle</h4>
+            <p><span><i style={{fontSize:"19px"}}>10 Day Plan :&nbsp;</i></span><span style={{textDecoration:"line-through",fontSize:"20px"}}> ₹700/Hr</span><span>&nbsp;<strong style={{fontSize:"30px"}}>₹399/Hr</strong></span></p>
+          </div>
+            <h4>Not known of riding Bicycle</h4>
+            <p><span><i style={{fontSize:"19px"}}>10-15 Day Plan :</i>&nbsp;</span><span style={{textDecoration:"line-through",fontSize:"20px"}}> ₹800/Hr</span><span>&nbsp;<strong style={{fontSize:"25px"}}>₹599/Hr</strong></span></p>
+          </div>
+          </div> */}
+        <div>
+          <h2 style={{textDecoration:"underline",fontSize:"28px",color:"#0f1265ff"}}>Four Wheeler</h2>
+          <h5 style={{textAlign:"center"}}><i>Tired of paying extra for combo?</i></h5>
+          <h5 style={{textAlign:"center"}}><i>Take how many ever classes you want!</i></h5>
+           {/* <p><span><i style={{fontSize:"19px"}}>10 Day Plan :</i>&nbsp;</span>&nbsp;<span style={{textDecoration:"line-through",fontSize:"20px"}}>₹650/Hr</span><span>&nbsp;<strong style={{fontSize:"30px"}}>₹499/Hr</strong></span></p> */}
+            <p><span><i style={{fontSize:"19px"}}>Each Class :</i>&nbsp;</span>&nbsp;<span><strong style={{fontSize:"30px"}}>₹500/Hr</strong></span></p>
+        </div><br></br>
+        <h4 style={{textAlign:"start"}}><i>✅ Full training - ABC</i></h4>
+          <h4 style={{textAlign:"start"}}><i>✅ Steering Controls</i></h4>
+          <h4 style={{textAlign:"start"}}><i>✅ Gear Balancing</i></h4>
+          <h4 style={{textAlign:"start"}}><i>✅ Round Form</i></h4><br></br>
+          <p style={{fontSize:"18px"}}>⚠️ Learners should have their own car</p>
+      </div>
 
         {/* Package 3: Combo */}
-        <div
+        <div data-aos="fade-in" data-aos-duration="2000"
           style={price2Style}
           onMouseEnter={() => handleHover(setPrice2Style)}
           onMouseLeave={() => handleLeave(setPrice2Style)}
         >
- <h2 className="card-title">
-            <span><img src={offer} alt="Offer badge" width={100} height={100} /></span>
-            <span style={{ fontSize: "50px" }}>3&nbsp;</span><span>in&nbsp;</span><span style={{ fontSize: "50px" }}>1</span>
-          </h2><br />
-          <h2 className="package-subtitle">Two Wheeler + Car + License</h2>
-          <h4> Known of riding Bicycle </h4>
-          <p><span><i>10 Day Plan :</i>&nbsp;</span><span className="old-price"> ₹700/Hr</span>
-          <span>&nbsp;<strong className="new-price">₹399/Hr</strong></span></p>
-          <h4> Not Known of riding Bicycle </h4>
-          <p><span><i>10-15 Day Plan :</i>&nbsp;</span><span className="old-price"> ₹800/Hr</span>
-          <span>&nbsp;<strong className="new-price">₹499/Hr</strong></span></p>
-          <h2 className="package-subtitle">Four Wheeler</h2>
-           <p><span><i>10-15 Day Plan :</i>&nbsp;</span><span className="old-price"> ₹650/Hr</span>
-          <span>&nbsp;<strong className="new-price">₹499/Hr</strong></span></p>
-          <p className="warning-text">⚠️ Learners should have their own car</p>
+ <h2 style={{fontSize:"35px",color:"#0f1265ff"}}>
+          <span><img src={offer} width={100} height={100}></img></span><span style={{fontSize:"50px"}}>License &nbsp;</span></h2><br></br>
+        <div>
+          <h2 style={{textDecoration:"underline",fontSize:"25px",color:"#0f1265ff"}}>Two Wheeler License</h2>
+          <div>
+          <div>
+            <p><span><i style={{fontSize:"19px"}}>Cost at :&nbsp;</i></span><span style={{textDecoration:"line-through",fontSize:"20px"}}> ₹6000/-</span><span>&nbsp;<strong style={{fontSize:"30px"}}>₹3499/-</strong></span></p>
+          </div>
+          </div>
+          </div>
+        <div>
+          <h2 style={{textDecoration:"underline",fontSize:"25px",color:"#0f1265ff"}} id="locations">Car + Two Wheeler</h2>
+           <p><span><i style={{fontSize:"19px"}}>Only at :</i>&nbsp;</span>&nbsp;<span style={{textDecoration:"line-through",fontSize:"20px"}}>₹8500/-</span><span>&nbsp;<strong style={{fontSize:"30px"}}>₹6500/-</strong></span></p>
+          <h4 style={{textAlign:"start"}}><i>✅ Complete assistance for License</i></h4>
+          <h4 style={{textAlign:"start"}}><i>✅ Test preparation support</i></h4>
+          <h4 style={{textAlign:"start"}}><i>✅ Document verification guidance</i></h4>
+        </div>
         </div>
       </div>
 
@@ -558,21 +655,21 @@ function App() {
       <h1 className="section-title" id="locations">Our Locations</h1>
       <div className="location-container">
         <div data-aos="fade-right" data-aos-duration="1000">
-          <button className="location-button" onClick={() => window.location.hash = "#contactus"}>📍Tambaram</button>
-          <button className="location-button" onClick={() => window.location.hash = "#contactus"}>📍Chrompet</button>
-          <button className="location-button" onClick={() => window.location.hash = "#contactus"}>📍Pallavaram</button>
-          <button className="location-button" onClick={() => window.location.hash = "#contactus"}>📍Meenambakkam</button>
+          <button className="location-button" onClick={() => window.location = "#contactus"}>📍Tambaram</button>
+          <button className="location-button" onClick={() => window.location = "#contactus"}>📍Chrompet</button>
+          <button className="location-button" onClick={() => window.location = "#contactus"}>📍Pallavaram</button>
+          <button className="location-button" onClick={() => window.location = "#contactus"}>📍Meenambakkam</button>
         </div>
         <div data-aos="fade-right" data-aos-duration="900">
-          <button className="location-button" onClick={() => window.location.hash = "#contactus"}>📍Velachery</button>
-          <button className="location-button" onClick={() => window.location.hash = "#contactus"}>📍Vandalur</button>
-          <button className="location-button" onClick={() => window.location.hash = "#contactus"}>📍Urapakkam</button>
-          <button className="location-button" onClick={() => window.location.hash = "#contactus"}>📍Guduvancheri</button>
+          <button className="location-button" onClick={() => window.location = "#contactus"}>📍Velachery</button>
+          <button className="location-button" onClick={() => window.location = "#contactus"}>📍Vandalur</button>
+          <button className="location-button" onClick={() => window.location = "#contactus"}>📍Urapakkam</button>
+          <button className="location-button" onClick={() => window.location = "#contactus"}>📍Guduvancheri</button>
         </div>
         <div data-aos="fade-right" data-aos-duration="900">
-          <button className="location-button" onClick={() => window.location.hash = "#contactus"}>📍Madambakkam</button>
-          <button className="location-button" onClick={() => window.location.hash = "#contactus"}>📍Potheri</button>
-          <button className="location-button" onClick={() => window.location.hash = "#contactus"}>📍Kattankulathur</button>
+          <button className="location-button" onClick={() => window.location = "#contactus"}>📍Madambakkam</button>
+          <button className="location-button" onClick={() => window.location = "#contactus"}>📍Potheri</button>
+          <button className="location-button" onClick={() => window.location = "#contactus"}>📍Kattankulathur</button>
         </div>
       </div>
 
@@ -580,7 +677,7 @@ function App() {
       {/* --- CONTACT US --- */}
       <div id="contactus" className="contact-form-container">
         <div className="contact-header">
-          <h2 className="card-title">Contact us</h2>
+          <h2 className="card-title" style={{color:"#0f1265ff"}}>Contact us</h2><br></br>
         </div>
         <div className="contact-info">
           <p><b><i>Mail: jansisharmila5@gmail.com</i></b></p>
@@ -602,10 +699,10 @@ function App() {
                 <textarea type="text" name="message" className="form-control" id="message" placeholder="Content" />
               </div><br />
               <div className="form-actions">
-                <button type="submit" className="contact-button-submit">Submit Booking</button>
+                <button type="submit" className="contact-button-submit" style={{marginRight:"180px"}}>Submit</button><br></br>
               </div>
             </form>
-            <button onClick={() => window.location.reload()} className="contact-button-refresh">Refresh</button>
+            {/* <button onClick={() => window.location.reload()} className="contact-button-refresh">Refresh</button> */}
           </div>
         </div>
       </div>
