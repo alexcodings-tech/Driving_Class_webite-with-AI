@@ -207,10 +207,8 @@
 }
 
 .service-idea-image-container .scheme-image {
-    width: 250px; 
-    height: 200px;
-    border-radius: 10px;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    width: 300px; 
+    height: 250px;
 }
 
 /* Gallery */
